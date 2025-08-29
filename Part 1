@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gatekeeper SuiteWorld 2025 - Interactive Sales Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+        
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            opacity: 0.95;
+            font-size: 1.1rem;
+        }
+        
+        .status-banner {
+            background: var(--success);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .sidebar {
+            background: #f3f4f6;
+            border-right: 2px solid #e5e7eb;
+            padding: 1.5rem;
+            overflow-y: auto;
+            position: sticky;
+            top: 140px;
+            height: calc(100vh - 140px);
+        }
+        
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .nav-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-item {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            margin-bottom: 0.25rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        
+        .nav-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .nav-item.active {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .content-area {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .pitch-card {
+            background: linear-gradient(to right, #f3f4f6, white);
+            border-left: 5px solid var(--primary);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .persona-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .do-dont-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .do-box {
+            background: #d1fae5;
+            border: 2px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .dont-box {
+            background: #fee2e2;
+            border: 2px solid var(--danger);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .objection-handler {
+            background: #fef3c7;
+            border: 2px solid var(--warning);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .competitor-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .competitor-card::before {
+            content: '⚔️';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            opacity: 0.2;
+        }
+        
+        .counter-strategy {
+            background: var(--dark);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        
+        .discovery-question {
+            background: #ede9fe;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .demo-step {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .soundbite {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            margin: 0.5rem 0;
+            font-style: italic;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metric-card {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .metric-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+        
+        .partner-logo {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            margin: 0.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .tab-container {
+            border-bottom: 2px solid #e5e7eb;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .tab-button:hover {
+            color: var(--primary);
+        }
+        
+        .tab-button.active {
+            color: var(--primary);
+        }
+        
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                display: none;
+            }
+            .do-dont-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🚀 Gatekeeper SuiteWorld 2025</h1>
+            <p>Interactive Sales Guide | Ecosystem Edition</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">October 6-9, 2025 | Las Vegas & On Air</p>
+        </header>
+        
+        <div class="status-banner">
+            ✅ Built for NetSuite Verified Partner | Creating the Vendor Command Center
+        </div>
+        
+        <div class="main-content">
+            <nav class="sidebar">
+                <div class="nav-section">
+                    <div class="nav-title">Event Intelligence</div>
+                    <a class="nav-item active" onclick="showSection('executive-brief', this)">📋 Executive Brief</a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-title">Essentials</div>
+                    <a class="nav-item" onclick="showSection('quick-start', this)">⚡ Quick Start</a>
+                    <a class="nav-item" onclick="showSection('ecosystem', this)">🌐 Ecosystem Strategy</a>
+                    <a class="nav-item" onclick="showSection('messaging', this)">📢 Core Messaging</a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-title">Conversations</div>
+                    <a class="nav-item" onclick="showSection('pitches', this)">💬 Elevator Pitches</a>
+                    <a class="nav-item" onclick="showSection('objections', this)">🛡️ Objection Handlers</a>
+                    <a class="nav-item" onclick="showSection('discovery', this)">🔍 Discovery Questions</a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-title">Competition</div>
+                    <a class="nav-item" onclick="showSection('competitors', this)">⚔️ Battle Cards</a>
+                    <a class="nav-item" onclick="showSection('partners', this)">🤝 Partner Talk Tracks</a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-title">Execution</div>
+                    <a class="nav-item" onclick="showSection('value', this)">💰 Value & ROI</a>
+                    <a class="nav-item" onclick="showSection('closing', this)">✨ Closing</a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-title">Reference</div>
+                    <a class="nav-item" onclick="showSection('soundbites', this)">💡 Soundbites</a>
+                </div>
+            </nav>
+            
+            <div class="content-area">
+                <!-- Executive Brief Section -->
+                <section id="executive-brief" class="content-section active">
+                    <h2 class="section-title">📋 Executive Brief: SuiteWorld 2025 Intelligence</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>⚡ Critical Intelligence for Returning Reps</h3>
+                        <p>NetSuite's 2025.1 release changes everything. They've added vendor management capabilities that create the perfect foundation for our intelligence layer. This is our moment to shine as their essential partner.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">🚀 NetSuite's 2025 Game-Changing Release</h3>
+                        
+                        <h4 style="color: var(--success); margin-top: 1rem;">What NetSuite Now Has:</h4>
+                        <ul>
+                            <li><strong>SuiteProcurement:</strong> New embedded indirect procurement module with vendor portal</li>
+                            <li><strong>AI Bill Capture:</strong> Automated invoice processing with duplicate detection</li>
+                            <li><strong>Enhanced Scorecards:</strong> Basic vendor performance tracking</li>
+                            <li><strong>Vendor Portal:</strong> Collaboration platform for POs and invoices</li>
+                            <li><strong>Narrative Reporting AI:</strong> Financial reporting with generative AI</li>
+                        </ul>
+                        
+                        <div class="highlight-box" style="margin-top: 1.5rem;">
+                            <h4>What This Means for Gatekeeper:</h4>
+                            <ul>
+                                <li>We ENHANCE NetSuite to create the complete Vendor Command Center</li>
+                                <li>We're the intelligence layer that makes NetSuite complete</li>
+                                <li>Our partners (Tipalti, Airbase, Zone & Co) create an unstoppable ecosystem</li>
+                                <li>Together, we deliver what no single vendor can</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">⚔️ Your Competition at SuiteWorld</h3>
+                        
+                        <div class="competitor-card">
+                            <h4>1. Zip (Biggest Direct Competitor)</h4>
+                            <ul>
+                                <li><strong>Status:</strong> Built for NetSuite verified, heavy presence, major momentum</li>
+                                <li><strong>Strength:</strong> 50 AI agents launching June 2025, $2.2B valuation, OpenAI customer</li>
+                                <li><strong>Weakness:</strong> No CLM, minimal risk assessment, no contract intelligence</li>
+                            </ul>
+                            <div class="counter-strategy">
+                                <strong>Your Counter:</strong> "50 agents doing tasks, but zero connecting risk to contracts to spend"
+                            </div>
+                        </div>
+                        
+                        <div class="competitor-card">
+                            <h4>2. Coupa</h4>
+                            <ul>
+                                <li><strong>Status:</strong> Major sponsor, pushing "Autonomous Spend Management"</li>
+                                <li><strong>Strength:</strong> $8T data moat, Cirtuo acquisition, enterprise leader</li>
+                                <li><strong>Weakness:</strong> 9-12 month implementation, no risk-contract connection</li>
+                            </ul>
+                            <div class="counter-strategy">
+                                <strong>Your Counter:</strong> "$8T of data but still blind to contract terms and vendor risk"
+                            </div>
+                        </div>
+                        
+                        <div class="competitor-card">
+                            <h4>3. Manual Processes/Status Quo (Biggest Competitor)</h4>
+                            <ul>
+                                <li><strong>Status:</strong> The default choice for many companies</li>
+                                <li><strong>Strength:</strong> "Free," familiar, "working fine"</li>
+                                <li><strong>Weakness:</strong> Doesn't scale, massive risk exposure, hidden costs</li>
+                            </ul>
+                            <div class="counter-strategy">
+                                <strong>Your Counter:</strong> "Manual processes cost 17% in missed savings alone"
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">🤝 Strategic Partners (Not Competitors!)</h3>
+                        
+                        <div style="background: #d1fae5; border: 2px solid var(--success); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <h4 style="color: #065f46;">✅ Our Ecosystem Allies</h4>
+                            <p>These are PARTNERS. Never position against them. Always emphasize how we work together.</p>
+                        </div>
+                        
+                        <div style="padding: 1rem; background: #f9fafb; border-left: 4px solid var(--success); border-radius: 4px; margin-bottom: 0.5rem;">
+                            <strong>Tipalti:</strong> NetSuite's 2024 Growth Partner - handles payments, we handle intelligence
+                        </div>
+                        <div style="padding: 1rem; background: #f9fafb; border-left: 4px solid var(--success); border-radius: 4px; margin-bottom: 0.5rem;">
+                            <strong>Airbase:</strong> Spend management partner - they manage workflows, we manage vendors
+                        </div>
+                        <div style="padding: 1rem; background: #f9fafb; border-left: 4px solid var(--success); border-radius: 4px; margin-bottom: 0.5rem;">
+                            <strong>Zone & Co:</strong> Financial automation partner - they close books, we ensure compliance
+                        </div>
+                        <div style="padding: 1rem; background: #f9fafb; border-left: 4px solid var(--success); border-radius: 4px;">
+                            <strong>Vertex/Avalara:</strong> Tax compliance partners - complete regulatory coverage together
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h3>🎯 Key Takeaways for SuiteWorld 2025</h3>
+                        <ol>
+                            <li><strong>NetSuite's new features are our opportunity</strong> - Position as enhancement, not replacement</li>
+                            <li><strong>Zip is the main threat</strong> - Focus on their lack of CLM and partner ecosystem</li>
+                            <li><strong>Partners are allies</strong> - Always position Tipalti/Airbase as complementary</li>
+                            <li><strong>Lead with ecosystem</strong> - No single vendor can do everything</li>
+                            <li><strong>LuminIQ is our ace</strong> - True AI intelligence vs basic automation</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quick Start Section -->
+                <section id="quick-start" class="content-section">
+                    <h2 class="section-title">⚡ Quick Start Guide</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>🎯 Core Message</h3>
+                        <p style="font-size: 1.2rem; margin-top: 1rem;">
+                            "NetSuite + Gatekeeper + Partners = Complete Vendor Command Center"
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">30-Second Qualifier</h3>
+                        <p><strong>"Are you using NetSuite's new SuiteProcurement?"</strong></p>
+                        <ul style="margin-top: 1rem;">
+                            <li><strong>If YES:</strong> "How are you handling vendor risk and contract management?"</li>
+                            <li><strong>If NO:</strong> "Let me show you what SuiteProcurement doesn't do - and what you need beyond it."</li>
+                            <li><strong>If CONSIDERING:</strong> "Before you implement, understand the gaps - no risk, no contracts, no compliance."</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="do-dont-grid">
+                        <div class="do-box">
+                            <h4>✅ Say This</h4>
+                            <ul>
+                                <li>"We enhance NetSuite, not replace it"</li>
+                                <li>"Built for NetSuite verified partner"</li>
+                                <li>"Our partners complete the ecosystem"</li>
+                                <li>"Risk intelligence flows through your stack"</li>
+                                <li>"NetSuite recognizes specialized partners are needed"</li>
+                            </ul>
+                        </div>
+                        <div class="dont-box">
+                            <h4>❌ Never Say</h4>
+                            <ul>
+                                <li>"We compete with Tipalti/Airbase"</li>
+                                <li>"NetSuite doesn't work"</li>
+                                <li>"NetSuite is missing things"</li>
+                                <li>"We do everything"</li>
+                                <li>"Another system to manage"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-number">17%</div>
+                            <div class="metric-label">Average Spend Recovery</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">6 Weeks</div>
+                            <div class="metric-label">Implementation Time</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">45%</div>
+                            <div class="metric-label">Reduced Payment Errors</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">80%</div>
+                            <div class="metric-label">Faster Audit Prep</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Ecosystem Section -->
+                <section id="ecosystem" class="content-section">
+                    <h2 class="section-title">🌐 Ecosystem Strategy</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>NetSuite's 2025 Game-Changer</h3>
+                        <p>NetSuite's new SuiteProcurement, AI Bill Capture, and Vendor Portal create the perfect foundation. But NetSuite knows that complete solutions require specialized partners. That's where we come in.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">The Three Pillars</h3>
+                        
+                        <h4>1. NetSuite Foundation</h4>
+                        <ul>
+                            <li>Handles all transactions brilliantly</li>
+                            <li>Provides the ERP backbone</li>
+                            <li>Creates vendor records and processes POs</li>
+                        </ul>
+                        
+                        <h4>2. Gatekeeper Intelligence</h4>
+                        <ul>
+                            <li>Adds risk assessment before transactions</li>
+                            <li>Provides contract lifecycle management</li>
+                            <li>Ensures compliance monitoring</li>
+                        </ul>
+                        
+                        <h4>3. Partner Amplification</h4>
+                        <div style="margin-top: 1rem;">
+                            <span class="partner-logo">Tipalti</span>
+                            <span class="partner-logo">Airbase</span>
+                            <span class="partner-logo">Zone & Co</span>
+                            <span class="partner-logo">Vertex</span>
+                        </div>
+                    </div>
+                    
+                    <div class="soundbite">
+                        "While competitors offer point solutions, we've built an ecosystem. NetSuite provides the foundation. Gatekeeper adds the intelligence. Our partners complete specialized functions. Together, we create your Vendor Command Center."
+                    </div>
+                </section>
+                
+                <!-- Core Messaging Section -->
+                <section id="messaging" class="content-section">
+                    <h2 class="section-title">📢 Core Messaging</h2>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Master Positioning Statements</h3>
+                        
+                        <div class="pitch-card">
+                            <div class="persona-badge">Version 1: Standard</div>
+                            <p>"NetSuite's new SuiteProcurement handles the buying. Gatekeeper handles the intelligence that makes buying safe, compliant, and profitable."</p>
+                        </div>
+                        
+                        <div class="pitch-card">
+                            <div class="persona-badge">Version 2: Ecosystem Focus</div>
+                            <p>"NetSuite provides the foundation. Our partners like Tipalti and Airbase add specialized capabilities. Gatekeeper adds the intelligence that connects everything into your complete Vendor Command Center."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Partnership Language</h3>
+                        <ul>
+                            <li>"NetSuite recognizes that complete solutions need specialized partners"</li>
+                            <li>"That's why we're Built for NetSuite verified"</li>
+                            <li>"It's NetSuite's ecosystem strategy in action"</li>
+                            <li>"Oracle understands that [specific area] requires specialized expertise"</li>
+                            <li>"This is NetSuite's vision realized"</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Pitches Section -->
+                <section id="pitches" class="content-section">
+                    <h2 class="section-title">💬 30-Second Elevator Pitches</h2>
+                    
+                    <div class="tab-container">
+                        <button class="tab-button active" onclick="showTab('admin-pitch', this)">NetSuite Admin</button>
+                        <button class="tab-button" onclick="showTab('finance-pitch', this)">Finance</button>
+                        <button class="tab-button" onclick="showTab('procurement-pitch', this)">Procurement</button>
+                        <button class="tab-button" onclick="showTab('risk-pitch', this)">Risk/Compliance</button>
+                        <button class="tab-button" onclick="showTab('legal-pitch', this)">Legal</button>
+                        <button class="tab-button" onclick="showTab('it-pitch', this)">IT Directors</button>
+                        <button class="tab-button" onclick="showTab('partner-pitch', this)">Partner Users</button>
+                    </div>
+                    
+                    <div id="admin-pitch" class="tab-content active">
+                        <div class="pitch-card">
+                            <div class="persona-badge">👨‍💼 NetSuite Admin</div>
+                            <p>"NetSuite's new SuiteProcurement is fantastic for streamlining purchase orders - exactly what the market needed. And NetSuite recognizes that a complete solution needs specialized partners. That's why we're Built for NetSuite verified. Your users need risk scores for each vendor, contract visibility, and compliance tracking - that's the intelligence layer we provide. It appears right in NetSuite, no new system to learn. NetSuite handles the transactions brilliantly, and we ensure those transactions are safe and compliant. Together, we give your users everything they need in one place."</p>
+                        </div>
+                    </div>
+                    
+                    <div id="finance-pitch" class="tab-content">
+                        <div class="pitch-card">
+                            <div class="persona-badge">💰 Finance Manager</div>
+                            <p>"NetSuite's Bill Capture is excellent at catching duplicate invoices - a huge time saver. But NetSuite knows that complete financial control requires more, which is why they partner with specialists like us. We add the critical intelligence layer - connecting every invoice to its contract, validating charges against agreed terms, and alerting you before costly auto-renewals. It's not about what NetSuite doesn't do - it's about NetSuite being smart enough to partner with experts who complete the picture. Together, we help customers find 17% in recoverable spend. That's the power of NetSuite's ecosystem approach."</p>
+                        </div>
+                    </div>
+                    
+                    <div id="procurement-pitch" class="tab-content">
+                        <div class="pitch-card">
+                            <div class="persona-badge">🛍️ Procurement Manager</div>
+                            <p>"SuiteProcurement revolutionizes purchase order management - NetSuite really delivered on that. But Oracle understands that complete procurement requires specialized expertise in risk, contracts, and compliance. That's why we're partners. While NetSuite perfects the transaction layer, we provide the intelligence layer - vendor risk assessments before onboarding, AI-powered contract management, and continuous compliance monitoring. It's NetSuite's ecosystem strategy in action: best-in-class at every layer, all working seamlessly together. This isn't about gaps - it's about NetSuite's vision for complete, intelligent procurement."</p>
+                        </div>
+                    </div>
+                    
+                    <div id="risk-pitch" class="tab-content">
+                        <div class="pitch-card">
+                            <div class="persona-badge">🛡️ Risk/Compliance Officer</div>
+                            <p>"NetSuite SuiteProcurement streamlines vendor transactions beautifully. But here's what's critical - and why NetSuite partners with us: every vendor needs risk assessment before they transact. Security verification, financial health checks, compliance validation - this specialized intelligence is our expertise. We put risk screening at the front door, with continuous monitoring for cyber, financial, and compliance threats. It all surfaces right in NetSuite, so your controls are never bypassed. NetSuite handles the transactions; we handle the intelligence that makes those transactions safe. That's why we're Built for NetSuite verified - we complete each other."</p>
+                        </div>
+                    </div>
+                    
+                    <div id="legal-pitch" class="tab-content">
+                        <div class="pitch-card">
+                            <div class="persona-badge">⚖️ Legal Operations</div>
+                            <p>"NetSuite excels at processing transactions, and they recognize that contract lifecycle management requires deep specialization - that's where we come in as their partner. We provide complete CLM that's seamlessly connected to every NetSuite transaction. When procurement creates a PO, they see contract terms. When finance processes an invoice, it's validated against agreements. When renewals approach, you get alerts with negotiation leverage. This is NetSuite's ecosystem vision realized - they provide the world's best ERP, we provide contract intelligence, and together we ensure every transaction respects your agreements. That's why we're Built for NetSuite verified."</p>
+                        </div>
+                    </div>
+                    
+                    <div id="it-pitch" class="tab-content">
+                        <div class="pitch-card">
+                            <div class="persona-badge">💻 IT Directors</div>
+                            <p>"SuiteProcurement creates vendor records, but are those vendors secure? When did they last pass a security assessment? Do they have cyber insurance? Are they on any sanctions lists? Gatekeeper adds the security layer NetSuite lacks - automated security assessments, continuous threat monitoring, and risk scores that travel with every vendor. All accessible right from NetSuite, so your users can't accidentally onboard a high-risk vendor. NetSuite and Gatekeeper together - that's comprehensive vendor security that protects your entire organization."</p>
+                        </div>
+                    </div>
+                    
+                    <div id="partner-pitch" class="tab-content">
+                        <div class="pitch-card">
+                            <div class="persona-badge">🤝 Current Partner Users</div>
+                            <p>"I see you're using [Tipalti/Airbase] - excellent choice, we're actually partners! They handle [payments/spend] brilliantly. We add the vendor intelligence layer - risk assessments before onboarding, contract terms during purchasing, compliance monitoring throughout. Together, we create your complete Vendor Command Center. Your [Tipalti/Airbase] investment becomes even more valuable. NetSuite provides the foundation, [Tipalti/Airbase] provides their specialty, and we provide the intelligence that connects everything. That's the beauty of NetSuite's ecosystem strategy."</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Objections Section -->
+                <section id="objections" class="content-section">
+                    <h2 class="section-title">🛡️ Objection Handlers</h2>
+                    
+                    <div class="objection-handler">
+                        <h4>"We already have Tipalti/Airbase"</h4>
+                        <p><strong>✅ Your Response:</strong></p>
+                        <p>"Perfect! We're partners with them. Tipalti/Airbase handles [their specialty] excellently. We add the vendor intelligence they need - risk scores, contract terms, compliance status. Together, we make your vendor management complete. Let me show you how we integrate..."</p>
+                    </div>
+                    
+                    <div class="objection-handler">
+                        <h4>"Too many systems already"</h4>
+                        <p><strong>✅ Your Response:</strong></p>
+                        <p>"That's exactly why you need Gatekeeper - we unify your vendor intelligence across all systems. NetSuite stays as your foundation, Tipalti keeps handling payments, Airbase manages spend - but now they all share intelligence through Gatekeeper. Fewer silos, not more systems."</p>
+                    </div>
+                    
+                    <div class="objection-handler">
+                        <h4>"We just implemented SuiteProcurement"</h4>
+                        <p><strong>✅ Your Response:</strong></p>
+                        <p>"Perfect timing! SuiteProcurement handles the transaction side beautifully - POs, invoices, basic scorecards. But I'm curious - how are you handling vendor risk assessments? Contract management? Compliance monitoring? Those are the expensive gaps. Gatekeeper fills them without disrupting your SuiteProcurement workflows."</p>
+                    </div>
+                    
+                    <div class="objection-handler">
+                        <h4>"NetSuite's Bill Capture handles our AP needs"</h4>
+                        <p><strong>✅ Your Response:</strong></p>
+                        <p>"Bill Capture is great at catching duplicate invoices. But let me ask - can it tell you if those charges exceed contracted rates? Or if the vendor's insurance has expired? Or if you're paying for services that overlap with another vendor? That's where Gatekeeper comes in. We don't replace Bill Capture - we make it intelligent."</p>
+                    </div>
+                    
+                    <div class="objection-handler" style="border: 2px solid #3b82f6; background: #eff6ff;">
+                        <h4>"We're concerned about AI security/We can't use AI"</h4>
+                        <p><strong>✅ Your Response:</strong></p>
+                        <p>"That's exactly why we're moving LuminIQ to Amazon Bedrock this September. Your data NEVER leaves your region - complete data sovereignty. We use Anthropic's Claude (not OpenAI), the same AI that powers major enterprises' secure operations. Plus, you can turn AI features on or off at any time."</p>
+                    </div>
+                </section>
+                
+                <!-- Discovery Section -->
+                <section id="discovery" class="content-section">
+                    <h2 class="section-title">🔍 Discovery Questions</h2>
+                    
+                    <div class="card">
+                        <h3 class="card-title">🎯 Opening Discovery (All Personas)</h3>
+                        <div class="discovery-question">"What's your current vendor management tech stack?"</div>
+                        <div class="discovery-question">"How well do these systems talk to each other?"</div>
+                        <div class="discovery-question">"Where do you spend the most time on manual reconciliation?"</div>
+                        <div class="discovery-question">"If Tipalti could see contract terms before paying, what would that prevent?"</div>
+                        <div class="discovery-question">"If Airbase knew vendor risk scores, how would that change approvals?"</div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Role-Specific Discovery</h3>
+                        
+                        <h4>NetSuite Admin:</h4>
+                        <div class="discovery-question">"How many custom fields did you create to track vendor compliance?"</div>
+                        <div class="discovery-question">"How do you connect SuiteProcurement to your contract repository?"</div>
+                        
+                        <h4 style="margin-top: 1.5rem;">Finance Manager:</h4>
+                        <div class="discovery-question">"Can Bill Capture tell you if charges exceed contract rates?"</div>
+                        <div class="discovery-question">"How do you know if you're paying two vendors for the same service?"</div>
+                        
+                        <h4 style="margin-top: 1.5rem;">Procurement Manager:</h4>
+                        <div class="discovery-question">"Does SuiteProcurement check vendor risk before creating POs?"</div>
+                        <div class="discovery-question">"How do you ensure purchases stay within contract terms?"</div>
+                    </div>
+                </section>
+                
+                <!-- Competitors Section -->
+                <section id="competitors" class="content-section">
+                    <h2 class="section-title">⚔️ Competitive Battle Cards</h2>
+                    
+                    <div class="competitor-card">
+                        <h3 class="card-title">🎯 Zip (Biggest Direct Threat)</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+                            <div>
+                                <h4>Their Strengths:</h4>
+                                <ul>
+                                    <li>50 AI agents launching</li>
+                                    <li>$2.2B valuation</li>
+                                    <li>Built for NetSuite verified</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Their Weaknesses:</h4>
+                                <ul>
+                                    <li>NO contract management</li>
+                                    <li>MINIMAL risk assessment</li>
+                                    <li>NO partner ecosystem</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="counter-strategy">
+                            "Zip offers 50 AI agents for tasks. We offer an intelligent ecosystem. While they're automating intake, we're connecting NetSuite + Tipalti + Airbase into one Vendor Command Center."
+                        </div>
+                    </div>
+                    
+                    <div class="competitor-card">
+                        <h3 class="card-title">💼 Coupa</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+                            <div>
+                                <h4>Their Strengths:</h4>
+                                <ul>
+                                    <li>$8T data moat</li>
+                                    <li>Market leader</li>
+                                    <li>Comprehensive platform</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Their Weaknesses:</h4>
+                                <ul>
+                                    <li>9-12 month implementation</li>
+                                    <li>No ecosystem approach</li>
+                                    <li>Enterprise complexity</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="counter-strategy">
+                            "$8T of data but blind to contracts and risk. 9-12 months to implement vs our 6 weeks. We leverage your existing ecosystem."
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Partners Section -->
+                <section id="partners" class="content-section">
+                    <h2 class="section-title">🤝 Partner Integration Talk Tracks</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>Remember: These are PARTNERS, not competitors!</h3>
+                        <p>Every mention should reinforce how we work TOGETHER to create the complete solution.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">💳 Tipalti Users</h3>
+                        <p><strong>Opening:</strong> "Tipalti is excellent for payment automation - we're actually partners. How are you ensuring those efficient payments go to compliant, low-risk vendors?"</p>
+                        <p><strong>Value Prop:</strong> "Tipalti ensures vendors get paid accurately. We ensure you're paying the RIGHT vendors for the RIGHT reasons."</p>
+                        <h4>Integration Points:</h4>
+                        <ul>
+                            <li>Risk scores flow to payment decisions</li>
+                            <li>Contract validation before payment</li>
+                            <li>Compliance status affects priority</li>
+                            <li>Unified vendor master data</li>
+                        </ul>
+                        <div class="highlight-box" style="margin-top: 1rem;">
+                            <strong>Success Story:</strong> "Joint customer reduced payment errors by 45% while cutting vendor risk by 70%."
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">✈️ Airbase Users</h3>
+                        <p><strong>Opening:</strong> "Great choice with Airbase for spend management - we partner closely. How are you assessing the vendors behind that spend?"</p>
+                        <p><strong>Value Prop:</strong> "Airbase manages spend workflows. We manage vendor relationships. Together, complete spend intelligence."</p>
+                        <h4>Integration Points:</h4>
+                        <ul>
+                            <li>Vendor risk informs spending limits</li>
+                            <li>Contract terms enforce approval rules</li>
+                            <li>Compliance status guides vendor selection</li>
+                            <li>Consolidated reporting across platforms</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section id="value" class="content-section">
+                    <h2 class="section-title">💰 Value & ROI</h2>
+                    
+                    <div class="card">
+                        <h3 class="card-title">ROI Calculator</h3>
+                        <p><strong>For $10M in vendor spend:</strong></p>
+                        <ul>
+                            <li>Manual process cost: $150K/year in labor</li>
+                            <li>Missed savings: $1.7M in recoverable spend (17%)</li>
+                            <li>Risk exposure: Potentially millions</li>
+                            <li>Gatekeeper investment: ~$100K</li>
+                        </ul>
+                        <div class="highlight-box" style="margin-top: 1rem;">
+                            <strong>Net Benefit: $1.75M+ Year One</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Value by Department</h3>
+                        
+                        <h4>Procurement Value:</h4>
+                        <ul>
+                            <li>90% faster vendor onboarding with automated risk assessment</li>
+                            <li>75% reduction in maverick spend through contract awareness</li>
+                            <li>3-5X productivity improvement with AI assistance</li>
+                        </ul>
+                        
+                        <h4>Finance Value:</h4>
+                        <ul>
+                            <li>17% average spend recovery through contract validation</li>
+                            <li>80% faster audit preparation with automated documentation</li>
+                            <li>45% reduction in payment errors with contract matching</li>
+                        </ul>
+                        
+                        <h4>Risk & Compliance Value:</h4>
+                        <ul>
+                            <li>70% reduction in vendor-related incidents</li>
+                            <li>100% vendor screening coverage (vs typical 20%)</li>
+                            <li>$4.88M average breach cost avoidance</li>
+                        </ul>
+                        
+                        <h4>Legal Value:</h4>
+                        <ul>
+                            <li>75% faster contract turnaround with AI</li>
+                            <li>Zero missed renewals or obligations</li>
+                            <li>10X productivity without adding headcount</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-number">$170K</div>
+                            <div class="metric-label">Per $1M Vendor Spend</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">3-6</div>
+                            <div class="metric-label">Month Payback</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">10x</div>
+                            <div class="metric-label">Productivity Gain</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">3X</div>
+                            <div class="metric-label">Guaranteed ROI</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">ROI Guarantee Structure</h3>
+                        <div style="background: #dcfce7; padding: 1rem; border-radius: 8px;">
+                            <h4>Our 3X ROI Guarantee:</h4>
+                            <ul>
+                                <li>We guarantee 3X return on investment within 12 months</li>
+                                <li>If we don't deliver, we work for free until we do</li>
+                                <li>Average customer sees 5-7X ROI</li>
+                                <li>17% spend recovery typically covers entire investment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="closing" class="content-section">
+                    <h2 class="section-title">✨ Closing Strategies</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>💫 The Vision Close</h3>
+                        <p>"Imagine Monday morning. You open NetSuite - your single source of truth. But now it's enriched:</p>
+                        <ul style="margin: 1rem 0;">
+                            <li>Every vendor has a risk score powered by Gatekeeper</li>
+                            <li>Every payment in Tipalti respects contract terms</li>
+                            <li>Every spend request in Airbase checks compliance first</li>
+                            <li>One dashboard shows everything</li>
+                        </ul>
+                        <p>That's not a future state - we deliver this in 6 weeks. Should we start with your highest-risk vendor category or your biggest spend area?"</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">💼 The Master Ecosystem Close</h3>
+                        <p><em>"You've built an impressive stack - NetSuite, Tipalti, Airbase. Each best-in-class.</em></p>
+                        <p><em>But they're speaking different languages. Tipalti doesn't know your contracts. Airbase can't see vendor risk.</em></p>
+                        <p><em>Gatekeeper is the intelligence layer that makes them work as one. In 6 weeks, your five systems become one Vendor Command Center.</em></p>
+                        <p><em>Should we start with a Tipalti pilot, or see the complete ecosystem vision first?"</em></p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">🎯 The Risk Close</h3>
+                        <p>"Every day without vendor intelligence is a day of exposure. Your competitors using manual processes are vulnerable. But you can be different.</p>
+                        <p>One cyber breach: $4.88M average cost. One compliance failure: massive fines. One bad vendor: reputation damage.</p>
+                        <p>Gatekeeper prevents all three. We're not a cost - we're insurance that pays you back. Ready to eliminate the risk?"</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">📊 The ROI Close</h3>
+                        <p>"Let's do simple math: You spend $10M on vendors. We'll find 17% in savings - that's $1.7M. Our cost? Under $100K.</p>
+                        <p>That's before we talk about risk prevention, productivity gains, or audit readiness.</p>
+                        <p>We guarantee 3X ROI. Most customers see 5-7X. Should we start with a spend analysis or jump straight to implementation?"</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">⚡ Speed Closes by Persona</h3>
+                        
+                        <h4>NetSuite Admin:</h4>
+                        <p>"Zero training, zero disruption, 100% inside NetSuite. Ready to make SuiteProcurement complete?"</p>
+                        
+                        <h4>Finance:</h4>
+                        <p>"17% guaranteed savings, 80% faster audits. Should we start with AP or vendor spend analysis?"</p>
+                        
+                        <h4>Procurement:</h4>
+                        <p>"From 3 weeks to 3 days for vendor onboarding. Which vendor category causes you the most pain?"</p>
+                        
+                        <h4>Risk/Compliance:</h4>
+                        <p>"100% vendor coverage, zero manual assessments. Ready to sleep better at night?"</p>
+                        
+                        <h4>C-Suite:</h4>
+                        <p>"3X guaranteed ROI, 6-week implementation. Can your team join our business case call Tuesday?"</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">🚀 Next Steps Framework</h3>
+                        
+                        <div style="background: #f3f4f6; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <h4>For Hot Leads:</h4>
+                            <p>"Let's get your pilot started. I'll need:</p>
+                            <ul>
+                                <li>30 minutes with your NetSuite admin</li>
+                                <li>List of your top 10 vendors by spend</li>
+                                <li>Current pain points prioritized</li>
+                            </ul>
+                            <p>Can we schedule that for early next week?"</p>
+                        </div>
+                        
+                        <div style="background: #fef3c7; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <h4>For Warm Leads:</h4>
+                            <p>"I'll send you:</p>
+                            <ul>
+                                <li>ROI calculator with your numbers</li>
+                                <li>Customer success story in your industry</li>
+                                <li>Integration overview for your stack</li>
+                            </ul>
+                            <p>When would be good for a deeper dive - next week or the week after?"</p>
+                        </div>
+                        
+                        <div style="background: #fee2e2; padding: 1rem; border-radius: 8px;">
+                            <h4>For Cool Leads:</h4>
+                            <p>"I understand timing might not be right. Can I send you:</p>
+                            <ul>
+                                <li>Our integration with [their tool]?</li>
+                                <li>How we helped [competitor/peer]?</li>
+                                <li>Our NetSuite enhancement guide?</li>
+                            </ul>
+                            <p>What would be most valuable for you?"</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="soundbites" class="content-section">
+                    <h2 class="section-title">💡 Key Soundbites</h2>
+                    <div class="soundbite">"SuiteProcurement is the car. Gatekeeper is the headlights."</div>
+                    <div class="soundbite">"NetSuite shows you HOW to buy. Gatekeeper shows you IF you should buy."</div>
+                    <div class="soundbite">"Efficient procurement without intelligence is just faster mistakes."</div>
+                    <div class="soundbite">"Bill Capture finds duplicate invoices. Gatekeeper finds duplicate vendors."</div>
+                    <div class="soundbite">"You wouldn't drive without insurance. Why procure without intelligence?"</div>
+                    <div class="soundbite">"NetSuite + Gatekeeper + Partners = Your Vendor Command Center"</div>
+                    <div class="soundbite">"50 AI agents doing tasks, but zero connecting risk to contracts to spend"</div>
+                    <div class="soundbite">"$8T of data but still blind to contract terms and vendor risk"</div>
+                    <div class="soundbite">"We're not another system - we're the intelligence that connects your systems"</div>
+                    <div class="soundbite">"Manual processes cost 17% in missed savings alone"</div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showSection(sectionId, navElement) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (navElement) {
+                navElement.classList.add('active');
+            }
+        }
+        
+        function showTab(tabId, button) {
+            const parentSection = button.closest('.content-section');
+            
+            // Hide all tabs in this section
+            parentSection.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            
+            // Update buttons
+            parentSection.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+        }
+    </script>
+</body>
+</html>
